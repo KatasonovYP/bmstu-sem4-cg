@@ -24,10 +24,7 @@ function App() {
 				</Container>
 			</Container>
 
-
-			<Card>
-				<Canvas/>
-			</Card>
+			<Canvas/>
 
 		</div>
 	)
