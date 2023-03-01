@@ -4,3 +4,9 @@
   padding: 2rem;
   text-align: center;
 }
+
+.canvas {
+  width: min-content;
+  border: 2px outset #646cff;
+}
+
