@@ -3,9 +3,11 @@ export interface IPoint {
 	y: number;
 }
 
+export type IEdge = [number, number];
+
 export interface IPointStore {
 	points: IPoint[];
-	// add: (point: IPoint) => void;
+	edges: IEdge[];
 	move: (dx: number, dy: number) => void;
 	rotate: (angle: number) => void;
 	scale: (kx: number, ky: number) => void;
