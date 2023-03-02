@@ -3,7 +3,7 @@ export interface IPoint {
 	y: number;
 }
 
-export type IEdge = [number, number];
+export type IEdge = number[];
 
 export interface IPointStore {
 	points: IPoint[];
