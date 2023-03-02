@@ -15,7 +15,6 @@ const MoveForm: FC = () => {
 		register,
 		handleSubmit,
 		formState: {errors},
-		setValue
 	} = useForm<IScaleForm>();
 
 	const scale = usePointStore(state => state.scale)

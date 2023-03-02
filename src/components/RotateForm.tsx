@@ -14,7 +14,6 @@ const RotateForm: FC = () => {
 		register,
 		handleSubmit,
 		formState: {errors},
-		setValue
 	} = useForm<IRotateForm>();
 
 	const rotate = usePointStore(state => state.rotate)
@@ -25,7 +24,7 @@ const RotateForm: FC = () => {
 
 	return (
 		<form onSubmit={handleSubmit(onAction)}>
-			<Box sx={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column' }}>
+			<Box sx={{display: 'flex', flexWrap: 'wrap', flexDirection: 'column'}}>
 				<TextField id='standard-basic'
 						   label="Введите угол"
 						   variant="standard"

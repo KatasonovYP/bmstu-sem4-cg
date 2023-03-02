@@ -15,7 +15,6 @@ const MoveForm: FC = () => {
 		register,
 		handleSubmit,
 		formState: {errors},
-		setValue
 	} = useForm<IMoveForm>();
 
 	const move = usePointStore(state => state.move)

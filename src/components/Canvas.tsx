@@ -1,6 +1,6 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC} from 'react';
 import usePointStore from "../store/store";
-import {Circle, Layer} from "react-konva";
+import {Circle} from "react-konva";
 import Grid from "./Grid/Grid";
 
 const Canvas: FC = () => {

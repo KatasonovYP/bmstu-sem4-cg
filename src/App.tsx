@@ -1,5 +1,4 @@
 import './App.css'
-import usePointStore from "./store/store";
 import {Container} from "@mui/material";
 import MoveForm from "./components/MoveForm";
 import RotateForm from "./components/RotateForm";

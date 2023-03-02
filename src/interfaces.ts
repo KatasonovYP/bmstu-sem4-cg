@@ -1,5 +1,3 @@
-import Figure from "./logic/Figure";
-
 export interface IPoint {
 	x: number;
 	y: number;
