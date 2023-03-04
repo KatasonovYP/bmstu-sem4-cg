@@ -25,7 +25,12 @@ export interface IPointStore {
 	scale: (kx: number, ky: number) => void;
 	getCenter: () => IPoint;
 	undo: () => void;
-	addAction: (frame: IFrame) => void;
+	reverseAction: (frame: IFrame) => void;
+	pushFrame: (frame: IFrame) => void;
+	popFrame: () => IFrame | undefined;
+	setMove: (dx: number, dy: number) => void;
+	setRotate: (angle: number) => void;
+	setScale: (kx: number, ky: number) => void;
 }
 
 export interface IStage {

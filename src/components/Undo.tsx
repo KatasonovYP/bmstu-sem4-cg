@@ -5,15 +5,14 @@ import usePointStore from "../store/store";
 const Undo: FC = () => {
 
 	const undo = usePointStore(state => state.undo)
+	const history = usePointStore(state => state.history)
 
-	const undoHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-		undo();
-	}
 
 	return (
 		<>
 			<Button
-				onClick={undoHandler}
+				disabled={!history.length}
+				onClick={() => undo()}
 			>
 				Отменить последнее действие
 			</Button>
