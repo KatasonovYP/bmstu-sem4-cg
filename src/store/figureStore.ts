@@ -3,7 +3,6 @@ import {EAction, IEdge, IPoint} from "../interfaces";
 import Figure from "../logic/Figure";
 import historyStore from "./historyStore";
 import data from '../data.json'
-import Point from "../logic/Point";
 
 export interface IFigureStore {
 	points: IPoint[];
@@ -12,10 +11,11 @@ export interface IFigureStore {
 	move: (dx: number, dy: number) => void;
 	rotate: (angle: number) => void;
 	scale: (kx: number, ky: number) => void;
+	setPivot: (x: number, y: number) => void;
 	setMove: (dx: number, dy: number) => void;
 	setRotate: (angle: number) => void;
 	setScale: (kx: number, ky: number) => void;
-	setPivot: (pivot: IPoint) => void;
+	setPivotToState: (x: number, y: number) => void;
 }
 
 const useFigureStore = create<IFigureStore>(
@@ -40,12 +40,18 @@ const useFigureStore = create<IFigureStore>(
 			get().setScale(kx, ky);
 		},
 
+		setPivot: (x: number, y: number) => {
+			const oldPivot = get().pivot;
+			historyStore.getState().pushFrame({action: EAction.PIVOT, x: oldPivot.x, y: oldPivot.y});
+			get().setPivotToState(x, y);
+		},
+
 		setMove: (dx, dy) => {
 			set((state): IFigureStore => ({
 				...state,
-				pivot: new Point(state.pivot)
-					.move(dx, dy)
-					.getPoint(),
+				// pivot: new Point(state.pivot)
+				// 	.move(dx, dy)
+				// 	.getPoint(),
 				points: new Figure(state.pivot, state.points)
 					.move(dx, dy)
 					.getPoints()
@@ -70,10 +76,10 @@ const useFigureStore = create<IFigureStore>(
 			}))
 		},
 
-		setPivot: (pivot: IPoint) => {
+		setPivotToState: (x: number, y: number) => {
 			set((state): IFigureStore => ({
 				...state,
-				pivot,
+				pivot: {x, y},
 			}))
 		}
 	}))

@@ -5,6 +5,7 @@ import RotateForm from "./components/forms/RotateForm";
 import ScaleForm from "./components/forms/ScaleForm";
 import Canvas from "./components/Canvas";
 import Undo from "./components/Undo";
+import PivotForm from "./components/forms/PivotForm";
 
 function App() {
 	return (
@@ -22,6 +23,10 @@ function App() {
 
 				<Container maxWidth='xs'>
 					<ScaleForm/>
+				</Container>
+
+				<Container maxWidth='xs'>
+					<PivotForm/>
 				</Container>
 			</Container>
 

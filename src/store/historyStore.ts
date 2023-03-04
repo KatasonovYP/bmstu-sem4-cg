@@ -34,6 +34,9 @@ const useHistoryStore = create<IHistoryStore>(
 				case EAction.SCALE:
 					useFigureStore.getState().setScale(1 / frame.kx, 1 / frame.ky);
 					break;
+				case EAction.PIVOT:
+					useFigureStore.getState().setPivotToState(frame.x, frame.y);
+					break;
 				default:
 					console.error('unknown action');
 					break;
