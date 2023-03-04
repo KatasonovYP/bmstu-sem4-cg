@@ -25,7 +25,8 @@ const MoveForm: FC = () => {
 
 	return (
 		<form onSubmit={handleSubmit(onAction)}>
-			<Box sx={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column' }}>
+			<Box sx={{display: 'flex', flexWrap: 'wrap', flexDirection: 'column'}}>
+
 				<TextField id='standard-basic'
 						   label="Введите X"
 						   variant="standard"
@@ -35,7 +36,6 @@ const MoveForm: FC = () => {
 				{errors.x?.type === 'required' && <p className="err" role="alert">Поле X необходимо</p>}
 				{errors.x?.type === 'pattern' && <p className="err" role="alert">Введите корректное число</p>}
 
-
 				<TextField id="standard-basic"
 						   label="Введите Y"
 						   variant="standard"
@@ -44,10 +44,10 @@ const MoveForm: FC = () => {
 				{errors.y?.type === 'required' && <p className="err" role="alert">Поле Y необходимо</p>}
 				{errors.y?.type === 'pattern' && <p className="err" role="alert">Введите корректное число</p>}
 
-
 				<Button variant="contained" type="submit">
 					Переместить
 				</Button>
+
 			</Box>
 		</form>
 	);

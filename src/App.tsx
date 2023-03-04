@@ -1,5 +1,5 @@
 import './App.css'
-import {Container} from "@mui/material";
+import Grid2 from '@mui/material/Unstable_Grid2';
 import MoveForm from "./components/forms/MoveForm";
 import RotateForm from "./components/forms/RotateForm";
 import ScaleForm from "./components/forms/ScaleForm";
@@ -12,27 +12,30 @@ function App() {
 		<div className="App">
 			<h1>Компьютерная графика Лабораторная работа №2</h1>
 
-			<Container maxWidth='xl'>
-				<Container maxWidth='xs'>
-					<MoveForm/>
-				</Container>
+			<Grid2 container spacing={6}>
+				<Grid2 container xs={6} spacing={6}>
+					<Grid2 xs={6}>
+						<PivotForm/>
+					</Grid2>
+					<Grid2 xs={6}>
+						<MoveForm/>
+					</Grid2>
+					<Grid2 xs={6}>
+						<ScaleForm/>
+					</Grid2>
+					<Grid2 xs={6}>
+						<RotateForm/>
+					</Grid2>
+					<Grid2 xs={12}>
+						<Undo/>
+					</Grid2>
+				</Grid2>
 
-				<Container maxWidth='xs'>
-					<RotateForm/>
-				</Container>
+				<Grid2 xs={6}>
+					<Canvas/>
+				</Grid2>
+			</Grid2>
 
-				<Container maxWidth='xs'>
-					<ScaleForm/>
-				</Container>
-
-				<Container maxWidth='xs'>
-					<PivotForm/>
-				</Container>
-			</Container>
-
-			<Undo />
-
-			<Canvas/>
 
 		</div>
 	)
