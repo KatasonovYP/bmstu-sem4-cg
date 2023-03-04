@@ -1,8 +1,8 @@
 import './App.css'
 import {Container} from "@mui/material";
-import MoveForm from "./components/MoveForm";
-import RotateForm from "./components/RotateForm";
-import ScaleForm from "./components/ScaleForm";
+import MoveForm from "./components/forms/MoveForm";
+import RotateForm from "./components/forms/RotateForm";
+import ScaleForm from "./components/forms/ScaleForm";
 import Canvas from "./components/Canvas";
 
 function App() {
