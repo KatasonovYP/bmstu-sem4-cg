@@ -1,13 +1,13 @@
 import React, {FC} from 'react';
-import usePointStore from "../store/store";
+import useFigureStore from "../store/figureStore";
 import {Circle, Line} from "react-konva";
 import Grid from "./Grid/Grid";
 
 const Canvas: FC = () => {
 
-	const points = usePointStore((state) => state.points);
-	const edges = usePointStore((state) => state.edges);
-	const getCenter = usePointStore((state) => state.getCenter);
+	const points = useFigureStore((state) => state.points);
+	const edges = useFigureStore((state) => state.edges);
+	const pivot = useFigureStore((state) => state.pivot);
 
 	return (
 		<Grid>
@@ -24,7 +24,7 @@ const Canvas: FC = () => {
 			{points.map((p, key) =>
 				<Circle key={key} x={p.x} y={p.y} fill='#F00' radius={5}/>
 			)}
-			<Circle x={getCenter().x} y={getCenter().y} fill='#0F0' radius={5}/>
+			<Circle x={pivot.x} y={pivot.y} fill='#0F0' radius={5}/>
 		</Grid>
 	);
 }

@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {Box, Button, TextField} from "@mui/material";
-import usePointStore from "../../store/store";
+import useFigureStore from "../../store/figureStore";
 import {numberRegExp} from "../../config";
 
 interface IScaleForm {
@@ -17,7 +17,7 @@ const MoveForm: FC = () => {
 		formState: {errors},
 	} = useForm<IScaleForm>();
 
-	const scale = usePointStore(state => state.scale)
+	const scale = useFigureStore(state => state.scale)
 
 	const onAction: SubmitHandler<IScaleForm> = data => {
 		scale(Number(data.kx), Number(data.ky))

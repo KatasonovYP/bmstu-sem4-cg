@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {Box, Button, TextField} from "@mui/material";
-import usePointStore from "../../store/store";
+import useFigureStore from "../../store/figureStore";
 import {numberRegExp} from "../../config";
 
 interface IMoveForm {
@@ -17,7 +17,7 @@ const MoveForm: FC = () => {
 		formState: {errors},
 	} = useForm<IMoveForm>();
 
-	const move = usePointStore(state => state.move)
+	const move = useFigureStore(state => state.move)
 
 	const onAction: SubmitHandler<IMoveForm> = data => {
 		move(Number(data.x), Number(data.y))

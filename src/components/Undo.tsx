@@ -1,11 +1,11 @@
 import React, {FC} from "react";
 import {Button} from "@mui/material";
-import usePointStore from "../store/store";
+import useHistoryStore from "../store/historyStore";
 
 const Undo: FC = () => {
 
-	const undo = usePointStore(state => state.undo)
-	const history = usePointStore(state => state.history)
+	const undo = useHistoryStore(state => state.undo)
+	const history = useHistoryStore(state => state.history)
 
 
 	return (
