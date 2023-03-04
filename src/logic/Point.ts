@@ -1,10 +1,16 @@
+import {IPoint} from "../interfaces";
+
 class Point {
 	x: number;
 	y: number;
 
-	constructor(x: number, y: number) {
-		this.x = x;
-		this.y = y;
+	constructor(point: IPoint) {
+		this.x = point.x;
+		this.y = point.y;
+	}
+
+	public getPoint(): IPoint {
+		return {x: this.x, y: this.y};
 	}
 
 	public eq(other: Point): boolean {
@@ -18,12 +24,13 @@ class Point {
 		return this.x - other.x;
 	}
 
-	public move(dx: number, dy: number): void {
+	public move(dx: number, dy: number) {
 		this.x += dx;
 		this.y += dy;
+		return this;
 	}
 
-	public rotate(center: Point, angle: number): void {
+	public rotate(center: Point, angle: number) {
 		const radians = (angle * Math.PI) / 180;
 		const r_cos = Math.cos(radians);
 		const r_sin = Math.sin(radians);
@@ -33,11 +40,14 @@ class Point {
 
 		this.x = +(old_x - center.x) * r_cos + (old_y - center.y) * r_sin + center.x;
 		this.y = -(old_x - center.x) * r_sin + (old_y - center.y) * r_cos + center.y;
+
+		return this;
 	}
 
-	public scale(center: Point, kx: number, ky: number): void {
+	public scale(center: Point, kx: number, ky: number) {
 		this.x = (this.x - center.x) * kx + center.x;
 		this.y = (this.y - center.y) * ky + center.y;
+		return this;
 	}
 
 	public findInArray(points: Array<Point>): boolean {

@@ -3,21 +3,11 @@ import {IPoint} from "../interfaces";
 
 class Figure {
 	points: Point[];
-	center: Point;
+	pivot: Point;
 
-	constructor(points: {x: number, y: number}[]) {
-		this.points = points.map(p => new Point(p.x, p.y));
-		this.center = new Point(0, 0)
-
-		if (points.length !== 0) {
-			const minX = Math.min(...points.map(p => p.x))
-			const minY = Math.min(...points.map(p => p.y))
-			const maxX = Math.max(...points.map(p => p.x))
-			const maxY = Math.max(...points.map(p => p.y))
-			this.center.x = (minX + maxX) / 2;
-			this.center.y = (minY + maxY) / 2;
-		}
-		// this.points.map(point => point.move(this.center.x, this.center.y));
+	constructor(pivot: IPoint, points: IPoint[]) {
+		this.points = points.map(point => new Point(point));
+		this.pivot = new Point(pivot)
 	}
 
 	public getPoints(): IPoint[] {
@@ -28,12 +18,8 @@ class Figure {
 		return points;
 	}
 
-	public getCenter(): IPoint {
-		return {...this.center};
-	}
-
 	public eq(other: Figure): boolean {
-		if (!this.center.eq(other.center))
+		if (!this.pivot.eq(other.pivot))
 			return false;
 		for (let i = 0; i < this.points.length; ++i) {
 			if (!this.points[i].eq(other.points[i])) {
@@ -44,7 +30,7 @@ class Figure {
 	}
 
 	public move(dx: number, dy: number) {
-		this.center.move(dx, dy);
+		this.pivot.move(dx, dy);
 		this.points.map(point => {
 			point.move(dx, dy);
 		});
@@ -53,14 +39,14 @@ class Figure {
 
 	public rotate(angle: number) {
 		this.points.map(point => {
-			point.rotate(this.center, angle)
+			point.rotate(this.pivot, angle)
 		})
 		return this;
 	}
 
 	public scale(kx: number, ky: number) {
 		this.points.map(point => {
-			point.scale(this.center, kx, ky);
+			point.scale(this.pivot, kx, ky);
 		});
 		return this;
 	}
