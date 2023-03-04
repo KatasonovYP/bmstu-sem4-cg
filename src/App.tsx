@@ -4,6 +4,7 @@ import MoveForm from "./components/forms/MoveForm";
 import RotateForm from "./components/forms/RotateForm";
 import ScaleForm from "./components/forms/ScaleForm";
 import Canvas from "./components/Canvas";
+import Undo from "./components/Undo";
 
 function App() {
 	return (
@@ -23,6 +24,8 @@ function App() {
 					<ScaleForm/>
 				</Container>
 			</Container>
+
+			<Undo />
 
 			<Canvas/>
 
