@@ -1,7 +1,8 @@
 import React, {FC, ReactNode, useState} from 'react';
-import {Circle, Layer, Stage} from "react-konva";
+import {Layer, Stage} from "react-konva";
 import {IStage} from "../../interfaces";
 import drawLines from "./drawLines";
+import {KonvaEventObject} from "konva/lib/Node";
 
 type GridProps = {
 	children: ReactNode;
@@ -15,7 +16,7 @@ const Grid: FC<GridProps> = ({children}) => {
 		scale: 1,
 	});
 
-	const handleDrag = (e: any) => {
+	const moveHandler = (e: KonvaEventObject<MouseEvent>) => {
 		const pos = e.currentTarget.position();
 		const x = pos.x
 		const y = pos.y
@@ -23,23 +24,32 @@ const Grid: FC<GridProps> = ({children}) => {
 	}
 
 	// scale
-	const handleWheel = (e: any) => {
+	const scaleHandler = (e: KonvaEventObject<WheelEvent>) => {
 		e.evt.preventDefault();
 
 		const scaleBy = 1.02;
 		const newStage = e.target.getStage();
-		const oldScale = newStage.scaleX();
+
+		if (newStage === null)
+			return
+
+		const pointer = newStage.getPointerPosition()
+
+		if (pointer === null)
+			return
+
+		const oldScale = stage.scale
 		const mousePointTo = {
-			x: newStage.getPointerPosition().x / oldScale - newStage.x() / oldScale,
-			y: newStage.getPointerPosition().y / oldScale - newStage.y() / oldScale
+			x: (pointer.x - newStage.x()) / oldScale,
+			y: (pointer.y - newStage.y()) / oldScale
 		};
 
 		const newScale = (e.evt.deltaY < 0 ? oldScale * scaleBy : oldScale / scaleBy);
 
 		setStage({
 			...stage,
-			x: (newStage.getPointerPosition().x / newScale - mousePointTo.x) * newScale,
-			y: (newStage.getPointerPosition().y / newScale - mousePointTo.y) * newScale,
+			x: pointer.x - mousePointTo.x * newScale,
+			y: pointer.y - mousePointTo.y * newScale,
 			scale: newScale,
 		});
 	};
@@ -50,8 +60,9 @@ const Grid: FC<GridProps> = ({children}) => {
 			draggable
 			width={stage.width} height={stage.height}
 			scaleX={stage.scale} scaleY={stage.scale}
-			onWheel={handleWheel}
-			onDragMove={handleDrag}
+			x={stage.x} y={stage.y}
+			onWheel={scaleHandler}
+			onDragMove={moveHandler}
 		>
 			<Layer
 				clipX={-stage.x / stage.scale}
@@ -65,8 +76,6 @@ const Grid: FC<GridProps> = ({children}) => {
 				{children}
 
 			</Layer>
-
-
 		</Stage>
 	);
 }
