@@ -28,7 +28,7 @@ const AboutProgram: FC = () => {
 				<Typography variant='h5'>
 					Вариант 10
 				</Typography>
-				<img src="/public/cg_lab_02_ref.png" alt="variant_10" width={200}/>
+				<img src="/cg_lab_02_ref.png" alt="variant_10" width={200}/>
 			</AccordionDetails>
 		</Accordion>
 	)
