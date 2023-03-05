@@ -33,7 +33,17 @@ const Canvas: FC = () => {
 			{/*		onClick={e => console.log(key)}*/}
 			{/*	/>*/}
 			{/*)}*/}
-			<Circle x={pivot.x} y={pivot.y} fill='#0F0' radius={2}/>
+
+			<Line
+				points={[points[12].x, points[12].y, points[13].x, points[13].y,
+						points[37].x, points[37].y, points[12].x, points[12].y]}
+				strokeWidth={5}
+				fill='#00F'
+				closed={true}
+			/>
+
+
+			<Circle x={pivot.x} y={pivot.y} fill='#F00' radius={5}/>
 		</Grid>
 	);
 }
