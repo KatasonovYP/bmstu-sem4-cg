@@ -10,7 +10,7 @@ interface IFeatureStore {
 const useFeatureStore = create<IFeatureStore>(
 	(set): IFeatureStore => ({
 
-		expanded: EPanel.PROGRAM,
+		expanded: EPanel.MANAGER,
 
 		handleChange: (panel: EPanel) =>
 			(event: SyntheticEvent, isExpanded: boolean) => {

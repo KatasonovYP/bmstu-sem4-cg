@@ -32,7 +32,7 @@ const PivotForm: FC = () => {
 				<TextField id='standard-basic'
 						   label="Введите X"
 						   variant="standard"
-						   defaultValue={10}
+						   defaultValue={150}
 						   {...register("x", {required: true, pattern: numberRegExp})}
 				/>
 				{errors.x?.type === 'required' && <p className="err" role="alert">Поле X необходимо</p>}
@@ -42,7 +42,7 @@ const PivotForm: FC = () => {
 				<TextField id="standard-basic"
 						   label="Введите Y"
 						   variant="standard"
-						   defaultValue={20}
+						   defaultValue={150}
 						   {...register("y", {required: true, pattern: numberRegExp})} />
 				{errors.y?.type === 'required' && <p className="err" role="alert">Поле Y необходимо</p>}
 				{errors.y?.type === 'pattern' && <p className="err" role="alert">Введите корректное число</p>}
