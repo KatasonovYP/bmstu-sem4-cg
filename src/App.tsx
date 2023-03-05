@@ -25,7 +25,6 @@ function App() {
 				</Grid2>
 			</Grid2>
 
-
 		</div>
 	)
 }
