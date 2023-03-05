@@ -6,14 +6,20 @@ import ScaleForm from "./components/forms/ScaleForm";
 import Canvas from "./components/Canvas";
 import Undo from "./components/Undo";
 import PivotForm from "./components/forms/PivotForm";
+import {Typography} from "@mui/material";
 
 function App() {
 	return (
 		<div className="App">
-			<h1>Компьютерная графика Лабораторная работа №2</h1>
+			<Typography variant="h2">
+				Компьютерная графика
+			</Typography>
+			<Typography  variant="h4" mb={4}>
+				Лабораторная работа №2
+			</Typography>
 
-			<Grid2 container spacing={6}>
-				<Grid2 container xs={6} spacing={6}>
+			<Grid2 container columnSpacing={6}>
+				<Grid2 container xs={6}>
 					<Grid2 xs={6}>
 						<PivotForm/>
 					</Grid2>
