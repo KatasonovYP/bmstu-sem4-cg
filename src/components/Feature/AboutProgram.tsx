@@ -8,7 +8,6 @@ import {EPanel} from "../../interfaces";
 const AboutProgram: FC = () => {
 
 	const expanded = useFeatureStore(state => state.expanded);
-	const setExpanded = useFeatureStore(state => state.setExpanded);
 	const handleChange = useFeatureStore(state => state.handleChange);
 
 	return (
