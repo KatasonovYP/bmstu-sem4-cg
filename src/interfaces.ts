@@ -3,6 +3,13 @@ export interface IPoint {
 	y: number;
 }
 
+export enum EPanel {
+	CLOSED = 'closed',
+	MANAGER = 'manager',
+	PROGRAM='program',
+	AUTHOR = 'author',
+}
+
 export enum EAction {
 	MOVE,
 	ROTATE,

@@ -7,6 +7,7 @@
 
 .canvas {
   width: min-content;
+  height: min-content;
   border: 2px outset #646cff;
 }
 

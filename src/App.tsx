@@ -7,6 +7,8 @@ import Canvas from "./components/Canvas";
 import Undo from "./components/Undo";
 import PivotForm from "./components/forms/PivotForm";
 import {Typography} from "@mui/material";
+import React from "react";
+import Feature from "./components/Feature";
 
 function App() {
 	return (
@@ -19,25 +21,11 @@ function App() {
 			</Typography>
 
 			<Grid2 container columnSpacing={6}>
-				<Grid2 container xs={6}>
-					<Grid2 xs={6}>
-						<PivotForm/>
-					</Grid2>
-					<Grid2 xs={6}>
-						<MoveForm/>
-					</Grid2>
-					<Grid2 xs={6}>
-						<ScaleForm/>
-					</Grid2>
-					<Grid2 xs={6}>
-						<RotateForm/>
-					</Grid2>
-					<Grid2 xs={12}>
-						<Undo/>
-					</Grid2>
+				<Grid2 container xs={7}>
+					<Feature/>
 				</Grid2>
 
-				<Grid2 xs={6}>
+				<Grid2 container xs={5}>
 					<Canvas/>
 				</Grid2>
 			</Grid2>
