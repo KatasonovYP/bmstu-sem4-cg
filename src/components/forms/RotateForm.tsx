@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import {SubmitHandler, useForm} from "react-hook-form";
-import {Box, Button, TextField} from "@mui/material";
+import {Button, Stack, TextField} from "@mui/material";
 import useFigureStore from "../../store/figureStore";
 import {numberRegExp} from "../../config";
 
@@ -24,7 +24,7 @@ const RotateForm: FC = () => {
 
 	return (
 		<form onSubmit={handleSubmit(onAction)}>
-			<Box sx={{display: 'flex', flexWrap: 'wrap', flexDirection: 'column'}}>
+			<Stack spacing={2}>
 				<TextField id='standard-basic'
 						   label="Введите угол"
 						   variant="standard"
@@ -37,7 +37,7 @@ const RotateForm: FC = () => {
 				<Button variant="contained" type="submit">
 					Повернуть
 				</Button>
-			</Box>
+			</Stack>
 		</form>
 	);
 }
